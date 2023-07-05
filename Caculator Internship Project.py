@@ -1,11 +1,12 @@
 import tkinter as Calculator
 calculation = ""
+#Defining Calculation
 def add_to_calculation(symbol):
     global calculation
     calculation += str(symbol)
     text_result.delete(1.0, "end")
     text_result.insert(1.0, calculation)
-
+#Defining the evaluation of the calculation
 def evaluate_calculation():
     global calculation
     try:
@@ -15,18 +16,18 @@ def evaluate_calculation():
     except:
         clear_field()
         text_result.insert(1.0, "Error")
-
+#Defining Clear Field to clear the Result
 def clear_field():
     global calculation
     calculation = ""
     text_result.delete(1.0, "end")
-
+#Geometry of the Calculator
 root = Calculator.Tk()
 root.geometry("300x270")
-
+#Result Bar
 text_result = Calculator.Text(root, height=2, width=16, font=("Arial", 24))
 text_result.grid(columnspan=5)
-
+#All Bottons Present in Simple Calculator
 btn_1 = Calculator.Button(root, text="1", command=lambda: add_to_calculation(1),width=5,font=("Arial",14))
 btn_1.grid(row=2, column=1)
 btn_2 = Calculator.Button(root, text="2", command=lambda: add_to_calculation(2),width=5,font=("Arial",14))
@@ -63,5 +64,4 @@ btn_clear = Calculator.Button(root, text="C", command=clear_field,width=11,font=
 btn_clear.grid(row=6, column=1, columnspan=2)
 btn_equal = Calculator.Button(root, text="=", command=evaluate_calculation,width=11,font=("Arial",14))
 btn_equal.grid(row=6, column=3, columnspan=2)
-
 root.mainloop()
